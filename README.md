@@ -9,3 +9,24 @@
 
 그래서 게임하고 머리식힐겸 노는 시간을 좀 쪼개서 플러터 공부를 할 예정입니다.   
 (정말 남는 시간에 공부하는 거라 1년이 될수도 있고, 더 될 수도 있습니다. 현재 목표는 괜찮은 컨텐츠의 내가 만든 어플 만들기!)
+
+
+## 참고
+
+- 입문자를 위한 플러터 튜토리얼  
+https://www.youtube.com/watch?v=Yt-DjG5b4iA&list=PLnIaYcDMsScxP2Nl8pEbmI__wkF0YVu0a
+
+- 구글 codelabs  
+https://codelabs.developers.google.com/?cat=Flutter
+
+일단 위 두 곳으로 기반을 닦아볼 생각입니다.
+
+## 과정
+
+현재 플러터 개발환경  
+vscode, 안드로이드 스토디오 다운, 플러터 세팅 완료, 시뮬레이터? 세팅 완료로   
+배울 준비를 모두 마쳤습니다.
+
+> (이미 플러터를 배우기 전에 무작정 풀스택 인프런 강좌를 참고로 해서, 간단한 플러터 어플을 만들어 봤었습니다. )  
+> 참고 : https://github.com/Kimdonghyeon7645/Flutter-and-Django-rest-API_project
+
