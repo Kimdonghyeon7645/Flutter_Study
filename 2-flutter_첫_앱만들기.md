@@ -31,5 +31,14 @@ c언어에서 자주봤던 main() 함수는 프로그램의 시작점이다. 이
 
 이 코드는 건들 필요가 없는 부분이다. 이제 앱에다 기능이나 그런것들을 개발할 때, MyApp()안에서 앱에서 들어갈 코드를 작성하지, 이 부분에 뭔가 넣지는 않는다. (이부분의 코드는 main()함수에서 만들었던 myApp()을 구동하는 역할이다.)
 
+```dart
+class extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
 
+    );
+  }
+}
+```
 
