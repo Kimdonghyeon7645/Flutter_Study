@@ -1,4 +1,4 @@
-## 1 - flutter 설치 
+# 1 - flutter 설치 
 
 flutter SDK 와 안드로이드 스튜디오, vscode 를 다운받는다. 
 
