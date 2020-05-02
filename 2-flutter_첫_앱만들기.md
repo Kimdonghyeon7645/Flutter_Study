@@ -41,4 +41,4 @@ class extends StatelessWidget {
   }
 }
 ```
-
+이제 MyApp() 를 만들어줄 차례이다. 
