@@ -26,19 +26,54 @@ import 'package:flutter/material.dart';
 ```dart
 void main() => runApp(MyApp());
 ```
+```dart
+// 위 코드같이 해도 되고, 아래 코드처럼 해도 된다.
+void main(){
+  runApp(MyApp());
+}
+```
 
-c언어에서 자주봤던 main() 함수는 프로그램의 시작점이다. 이함수를 기초로 해서 다른 함수들도 실행이 되는건데, 여기서 main() 함수로 runApp(); , 말그대로 앱(App)을 실행(run)한다. 그리고 그안의 인자값인 MyApp() 이 실행되는 앱이 되는 것이다.
+c언어에서 자주봤던 main() 함수는 프로그램의 시작점이다. 이함수를 기초로 해서 모든 프로그램이 실행이 되는건데, 여기서 main() 함수로 runApp(); , 말그대로 앱(App)을 실행(run)한다. 그리고 그안의 인자값인 MyApp() 이 실행되는 앱이 되는 것이다.
 
-이 코드는 건들 필요가 없는 부분이다. 이제 앱에다 기능이나 그런것들을 개발할 때, MyApp()안에서 앱에서 들어갈 코드를 작성하지, 이 부분에 뭔가 넣지는 않는다. (이부분의 코드는 main()함수에서 만들었던 myApp()을 구동하는 역할이다.)
+이 코드는 건들 필요가 없는 부분이다. 메인에서 앱을 구동하는 코드는 그대로 두고, 앱안에 뭐가 들어갈지 앱 클래스 안에서 정해주면 되는 것이다.
 
 ```dart
 class extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Container();
+  }
+}
+```
+이제 MyApp() 를 만들어줄 차례이다. 여기서 앱을 저장할 때, 두가지 방법이 있다. 정적인 stateless 와 동적인 statefull, 여기서는 기본적인 stateless 방식으로 만들어 주었다.   
+st 만 쳐도, 자동완성으로 stless 를 볼 수 있는데, 클릭하면 위같이 자동으로 기본 statelsee 구조가 짜여저 나온다.
 
+```dart
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp();
+  }
+}
+```
+여기에서 class 이름인 MyApp 을 적어주고, 
+
+위젯 빌드 함수를 오버라이드 해서 빌드함수를 리턴할때,   
+container()가 아니라, 아까 가져온 패키지, materialapp(매터리얼앱)으로 반환할 것이기 때문에, 컨테이너 대신에 메터리얼앱으로 바꿔준다.
+
+그리고 메터리얼앱의 괄호안에 실제 앱의 내용을 넣어주면 되는 것이다.
+
+```dart
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Hi! Flutter~!',
+      theme: ThemeData(primarySwatch: Colors.blueGrey),
+      home: MyHomePage(title: 'Hi Flutter Home Page')
     );
   }
 }
 ```
-이제 MyApp() 를 만들어줄 차례이다. 
+그리고 MaterialApp의 괄호안에 요소를 넣어준다. title(제목)으로 :(클론)뒤에 문자열로 제목을 넣고,  
+theme(테마)로 :(클론)뒤에 ThemeData()를 넣고, ThemeData() 괄호 안에 primarySwatch
