@@ -46,7 +46,8 @@ class extends StatelessWidget {
 }
 ```
 이제 MyApp() 를 만들어줄 차례이다. 여기서 앱을 저장할 때, 두가지 방법이 있다. 정적인 stateless 와 동적인 statefull, 여기서는 기본적인 stateless 방식으로 만들어 주었다.   
-st 만 쳐도, 자동완성으로 stless 를 볼 수 있는데, 클릭하면 위같이 자동으로 기본 statelsee 구조가 짜여저 나온다.
+st 만 쳐도, 자동완성으로 stless 를 볼 수 있는데, (안드로이드 스튜디오에서는 그런데, vscode에서는 Flutter stateless widget 을 클릭하면 된다.)  
+클릭하면 위같이 자동으로 기본 statelsee 구조가 짜여저 나온다.
 
 ```dart
 class MyApp extends StatelessWidget {
@@ -69,7 +70,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Hi! Flutter~!',
-      theme: ThemeData(primarySwatch: Colors.blueGrey),
+      theme: ThemeData(primarySwatch: Colors.blueGrey), //Colors. 뒤의 색상명은 자기가 하고싶은 색상으로
       home: MyHomePage(title: 'Hi Flutter Home Page')
     );
   }
@@ -130,7 +131,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
 이제 아래 클래스로 넘어가서 직접적인 앱의 구성을 짜주자. return으로 컨테이너가 되있는데 Scaffold으로 바꿔주자. <a href="#link1"><sup>1</sup></a>
 
+```dart
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(widget.title),),
+    );
+  }
+}
+```
+그리고 이제 scaffold 안에 appBar를 추가하자. appBar: AppBar() 같이 해서 앱바를 만들고, title: 로 제목을 Text()와 같이 지정해 준다.
 
- ---
+Text()는 이름그대로 텍스트를 그려주는데, Text() 괄호 안에 문자열을 넣으면 문자열을 그려준다. 여기서는 아까 MyHomePage 에서 title 을 출력하기 위해, widget.title 을 괄호안에 넣어준다.   
+아까의 title 을 접근하려면 widget. 을 앞에 붙여서 사용한다.
 
- <a name="link1">1 : scaffold 와 container 에 대해서 설명하려니까 길어져서 2#.md 에서 모아서 정리했다. 이말고도 다른 2.md 에서 보충하지 못한 설명들을 담았으니까 참고.
+이제 그리고 한번 F5 를 눌러서 실행해보자. (에뮬레이터로 구동하면, 작성한 main.dart 가 실행되는 코드를 볼 수 있다.)
+
+![image](https://user-images.githubusercontent.com/48408417/80909185-5673df80-8d61-11ea-928d-e4b7bb216480.png)
+
+위같이 앱바에 title 에서 저장한 문자열이 잘 출력되면 성공!
+
+#### ㄴ> 2편에서 계속...
+
+---
+
+<a name="link1">1 : scaffold 와 container 에 대해서 설명하려니까 길어져서 2#.md 에서 모아서 정리했다. 이말고도 다른 2.md 에서 보충하지 못한 설명들을 담았으니까 참고.
