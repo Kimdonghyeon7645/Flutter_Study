@@ -44,9 +44,25 @@ stateless 는 state 가 없어서(state가 less(안차있기)하기에) state 'l
 이런 state는 statefull 위젯의 인스턴스(위젯은 클래스로 만들고, 인스턴스로 위젯을 생성한다.)의 행동을 담당한다.  
 위젯의 동작과, 레이아웃을 위한 정보를 가지고 있고, 이 state 가 변경되면, 자동으로 위젯은 리빌드 된다.
 
+#### Scaffold
+build 함수의 return 값으로 container와 scaffold 등이 들어가는데, 얘 정체는 뭘까?
+
+부르기는 스캐폴드, 발판이란 뜻을 가진 단어인데, 
+
+- 최상단의 앱바(AppBar, 맨위에 있는 영역), 
+- 중간영역(Body, 가운데 영역), 
+- 최하단의 버튼(BottomNavigationBar, 네비게이션 버튼으로 맨아래에 있는 버튼영역), 
+- 창위에 떠있는 버튼(FloatingActionButtonLocation, 내용들위에 떠있는 버튼영역) 
+
+같은 것을 지원해주는 클래스다.
+그니까 scaffold 클래스안에서 위같은 것들을 사용할 수 있는 것이다. 
+
 ## 참고 
 
 https://medium.com/@dan_kim/%EB%B2%88%EC%97%AD-flutter-%EC%9C%84%EC%A0%AF-%EC%82%AC%EC%9A%A9%ED%95%B4%EB%B3%B4%EA%B8%B0-1a22231d25c6
 
 https://paulaner80.tistory.com/entry/Widget-State-BuildContext-%EA%B7%B8%EB%A6%AC%EA%B3%A0-InheritedWidget  
 (여기서 기본 문법 말고도 다른 용어나 설명이 나와있으니, 나중에도 참고하자.)
+
+https://dalgonakit.tistory.com/103
+(scaffold 에대해 쉽게 설명해줘서 고마웠다. 다음에도 북마크해두고 자주 참고하자.)

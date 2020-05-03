@@ -76,4 +76,61 @@ class MyApp extends StatelessWidget {
 }
 ```
 그리고 MaterialApp의 괄호안에 요소를 넣어준다. title(제목)으로 :(클론)뒤에 문자열로 제목을 넣고,  
-theme(테마)로 :(클론)뒤에 ThemeData()를 넣고, ThemeData() 괄호 안에 primarySwatch
+theme(테마)로 :(클론)뒤에 ThemeData()를 넣고, ThemeData() 괄호 안에 primarySwatch(기본적인 견본?): Colors.(색상) 으로 테마의 기본 색상을 지정할 수 있다. (나중에 앱바나 그런 것들의 기본색상이 여기서의 색상으로 된다.)
+
+home: 으로 이제 새 위젯을 불러올 수 있다.
+> home: 클래스이름(키: 값)
+
+과 같은 형식인데, 여기선 MyHomePage() 란 위젯을 만들어줄 꺼다. title로 'Hi Flutter Home Page'를 지정해 주면서,
+
+```dart
+class  extends StatefulWidget {
+  @override
+  _State createState() => _State();
+}
+
+class _State extends State<> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      
+    );
+  }
+}
+```
+MyHomePage() 는 stateFul로 만들어 줄껀데, 마찬가지로 ste 를 치면 나오는 steful 자동완성 기능을 이용해서 이렇게 한번에 만들어 줄 수 있다. 
+
+그리고 클래스이름으로 아까의 MyHomePage 를 작성해 준다. 다중 커서 기능으로, 클래스 이름을 한번만 적어줘도, 필요한 데에 같이 이름이 적혀서 편리하다. ㅎㅎ
+
+위의 코드 구조를 보면, 첫번째 클래스에서 state가 생성될때 호출되는 createState() 함수로 아래 클래스를 연결하는 형식이다. 그리고 아래 클래스에서 stateless 처럼 build 함수를 오버라이드 해서, 그 함수의 리턴값에 앱의 직접적인 내용이 들어간다.
+
+```dart
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+  final String title;
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+    );
+  }
+}
+```
+
+이렇게 클래스이름으로 MyHomePage 를 적어주고, 아까 MyHomePage를 home: 에서 호출하면서 title: 'Hi Flutter Home Page' 라고 괄호안에 값을 넘겨줬는데,
+
+여기서 그 값을 받을 수 있게, MyHomePage({Key key, this.title})로 key라는 이름의 Key와, (묘하게 말장난 같다;;) this.title 로, super(key : key) 와 같이 해서 넘겨준 값을 받을 수 있다.
+
+근데 여기서 this.title 은 현재 클래스의 title 속성을 말하는 건데, 이렇게만 해주면 없다.. 그래서 final String title; 같이 해서 속성을 생성해줘야 된다.  
+(final은 상수, 변하지 않는 값이란 선언이고, String은 문자열 자료형이란 뜻이고, title 은 이름이다.)
+
+이제 아래 클래스로 넘어가서 직접적인 앱의 구성을 짜주자. return으로 컨테이너가 되있는데 Scaffold으로 바꿔주자. <a href="#link1"><sup>1</sup></a>
+
+
+ ---
+
+ <a name="link1">1 : scaffold 와 container 에 대해서 설명하려니까 길어져서 2#.md 에서 모아서 정리했다. 이말고도 다른 2.md 에서 보충하지 못한 설명들을 담았으니까 참고.

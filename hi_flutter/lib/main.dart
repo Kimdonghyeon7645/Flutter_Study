@@ -24,7 +24,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('고자는 죽었다.')),
     );
   }
 }
