@@ -44,7 +44,7 @@ stateless 는 state 가 없어서(state가 less(안차있기)하기에) state 'l
 이런 state는 statefull 위젯의 인스턴스(위젯은 클래스로 만들고, 인스턴스로 위젯을 생성한다.)의 행동을 담당한다.  
 위젯의 동작과, 레이아웃을 위한 정보를 가지고 있고, 이 state 가 변경되면, 자동으로 위젯은 리빌드 된다.
 
-#### Scaffold
+## Scaffold
 build 함수의 return 값으로 container와 scaffold 등이 들어가는데, 얘 정체는 뭘까?
 
 부르기는 스캐폴드, 발판이란 뜻을 가진 단어인데, 
