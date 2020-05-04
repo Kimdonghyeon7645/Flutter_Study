@@ -21,10 +21,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.title),),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('버튼을 눌러서 숫자를 카운터 해보세요!'),
+            Text(
+              '$_counter', 
+              style: Theme.of(context).textTheme.display1,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
