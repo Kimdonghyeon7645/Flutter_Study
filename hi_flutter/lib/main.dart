@@ -39,6 +39,16 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _iconCounter,
+        tooltip: '누르면 숫자가 증가합니다.',
+        child: Icon(Icons.add),
+      ),
     );
+  }
+  void _iconCounter() {
+    setState(() {
+      _counter++;
+    });
   }
 }
