@@ -220,9 +220,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
   void _iconCounter() {
-    setState(() {
-      
-    });
+    setState(() => _counter++);
   }
 }
 ```
