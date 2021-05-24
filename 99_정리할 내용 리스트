@@ -23,7 +23,11 @@
 
 
 
-- PageView 위젯 : https://jvvp.tistory.com/1135 
+- PageView 위젯 : 
+  - 참고 사이트 목록
+    https://jvvp.tistory.com/1135 
+    https://www.youtube.com/watch?v=J1gE9xvph-A
+    https://api.flutter.dev/flutter/widgets/PageView-class.html
 
 
 
@@ -150,7 +154,6 @@
 	    }
 	  ```
 	
-	  
 - 이미지 휴대폰에서 불러오려면 :
 
 	- ```image_picker``` 라이브러리를 사용한다 https://pub.dev/packages/image_picker
@@ -175,4 +178,15 @@
 		  ]
 	  )
 
+
+
+- pageview 인덱스 설정 :
+
+  - 처음 인덱스를 0보다 큰 수(기본값 0, 0은 왼쪽 끝임)로 두면 된다. 
+
+    ```dart
+    controller: PageController(initialPage: 처음인덱스),
+    ```
+
+  - 참고 사이트 https://stackoverflow.com/questions/50321213/how-to-extend-pageview-to-both-sides-with-builder
 
