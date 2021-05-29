@@ -151,4 +151,15 @@
 	  ```
 	
 	  
+- 이미지 휴대폰에서 불러오려면 :
+
+	- ```image_picker``` 라이브러리를 사용한다 https://pub.dev/packages/image_picker
+
+	- 내 코드
+
+	  ```dart
+	  final pickedFile = await ImagePicker().getImage(source: ImageSource.gallery);
+      image = File(pickedFile.path);
+	  ```
+
 
