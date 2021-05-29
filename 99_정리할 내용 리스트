@@ -1,0 +1,154 @@
+# 정리할 내용 리스트
+
+> 프로젝트에 바빠 미처 정리하지 못하는 개념들을 임시로 기록하는 곳
+
+- GetX 컨트롤러는 위젯 밖에서 참조하지 말자 :
+    - 일반적으로 GetX 컨트롤러는 위젯에서만 put() 되어 쓰인다면 그 위젯과 생명주기를 같이 한다. (위젯이 삭제되면 자동으로 onDelete()가 호출)
+    - 근데 위젯 밖에서도 사용하면 컨트롤러를 사용한 위젯이 존재하는 한 컨트롤러가 존재하게 된다.
+    - 위젯이 생성될 때마다 컨트롤러가 생성되는 구조에 예상치못한 복병이 될 수 있으니 주의
+    
+    
+    
+- DateUtil로 직접 달력 위젯 만들기 :
+    - 내가 만든 예제
+        https://github.com/Kimdonghyeon7645/Dart-Study/blob/master/dev/bin/useDateUtil.dart
+    - 참고 사이트 목록
+        https://pub.dev/packages/date_util/install
+        https://www.python2.net/questions-514856.htm
+        https://stackoverflow.com/questions/58762347/how-to-get-number-of-days-of-all-month-in-dart-flutter
+    
+    
+    
+- DropdownButton 위젯 : https://api.flutter.dev/flutter/material/DropdownButton-class.html
+
+
+
+- PageView 위젯 : https://jvvp.tistory.com/1135 
+
+
+
+- [Flutter : The method 'add' was called on null](https://stackoverflow.com/questions/65144596/flutter-the-method-add-was-called-on-null) 에러 해결 : 
+    - ```List a;``` 를 ```List a = [];```로 해준다 
+
+
+
+- http 라이브러리 : 
+    - 내 코드
+    
+        ```dart
+        import 'dart:convert';
+        
+        import 'package:http/http.dart';
+        
+        Future<void> loadMotionDetail(int id) async {
+            final response = await get(Uri.parse("http://3.34.209.123/motion/detail/$id"));
+            final parsedRes = json.decode(response.body);
+            // 이제 
+        }
+        ```
+    
+    - 참고 사이트 목록
+        https://pub.dev/packages/http
+        
+    - 참고 : 이전 버전은 ```get(uri문자열)```이지만, 최신 버전은 ```get(Uri.parse(uri문자열))```입니다.
+    
+    
+    
+- SafeArea가 무조건 좋지 않다 :
+
+    - 무턱대고 SafeArea를 감싸면 휴대폰의 상태표시줄(상단바)가 없어지고 검은 공간만 남게될 수 있다. 
+    - SafeArea를 지우면 최상단에 상태표시줄과 앱 컨텐츠가 겹치지는데, 
+        AppBar를 추가하거나, 여백을 두어 해결할 수 있다.
+
+    
+
+- formData를 서버에 보내려면 :
+
+    - dio 라이브러리 쓰면 된다 https://pub.dev/packages/dio
+
+    - 내 코드
+
+        ```dart
+        final response = await Dio().post(
+              "uri문자열",
+              data: FormData.fromMap({
+                  "dart에서 쓰던": "Map 타입을 쓰면된다.",
+                  "타입은 다양하게 된다.": 10,
+              })
+        );
+        ```
+
+    
+
+- 이미지를 서버에 보내려면 :
+
+	- dio의 ```MultipartFile.fromFile(파일경로, 파일이름)```을 쓰면 된다.
+	
+	- 내 코드
+	
+	  ```dart
+	  final File file;	// 이렇게 전송하고 싶은 파일(이미지) 객체가 있으면
+	  final String filePath = file.path;
+	  final String fileName = filePath.split("/").last;
+	  
+	  await MultipartFile.fromFile(filePath, filename: fileName);		// 이렇게 MultipartFile 객체를 생성하고, 
+	  
+	  // dio().post() 안의 data: FromData.fromMap() 의 인자로 들어가는 Map 객체 안에 추가해주면 된다. (아래 참고)
+	  final response = await Dio().post(
+	        "uri문자열",
+	        data: FormData.fromMap({
+	            "file": await MultipartFile.fromFile(filePath, filename: fileName),
+	        })
+	  );
+	  ```
+	
+	
+	
+- 이미지 Uri을 파일 객체로 저장하려면 : 
+
+	- ```path_provider``` 라이브러리를 이용해 빈 파일을 만들고, 
+	  거기에 get요청으로 받아온 파일(이미지) 데이터(바이트)를 빈 파일에 저장하여 
+	  완성된 파일(이미지) 객체를 반환한다.
+	
+	- 내 코드
+	
+	  ```dart
+	  import 'dart:io';
+	  import 'package:http/http.dart';
+	  import 'package:path/path.dart';
+	  import 'package:path_provider/path_provider.dart';
+	  
+	  Future<File> fileFromImageUrl(String url) async {
+	    final response = await get(Uri.parse(url));
+	    final documentDirectory = await getApplicationDocumentsDirectory();
+	    final file = File(join(documentDirectory.path, url.split("/").last));
+	    file.writeAsBytesSync(response.bodyBytes);
+	    return file;
+	  }
+	  ```
+	
+	
+	
+- AppBar 위젯 클래스로 따로 저장하려면 :
+
+	- 보통 만드는 stless 같은 클래스에 ```PreferredSizeWidget``` 를 상속받아야 한다.
+	
+	- 내 코드
+	
+	  ```dart
+	  class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+	    @override
+	    final Size preferredSize;
+	  
+	    AddPageAppBar({Key key
+	        : preferredSize = Size.fromHeight(kToolbarHeight),
+	          super(key: key);
+	  
+	    @override
+	    Widget build(BuildContext context) {
+	        return 위젯(...);
+	    }
+	  ```
+	
+	  
+
