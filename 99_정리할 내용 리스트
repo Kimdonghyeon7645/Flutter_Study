@@ -163,3 +163,16 @@
 	  ```
 
 
+
+- build 반환문의 위젯에서 반복문 쓰기 : 
+
+	- 내 코드
+
+	  ```dart
+	  return Column(
+		  children: [
+			  for(i in ["반", "복", "문"]) Text(i),
+		  ]
+	  )
+
+
