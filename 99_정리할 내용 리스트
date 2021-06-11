@@ -1,4 +1,4 @@
-# 정리할 내용 리스트
+정리할 내용 리스트
 
 > 프로젝트에 바빠 미처 정리하지 못하는 개념들을 임시로 기록하는 곳
 
@@ -189,4 +189,51 @@
     ```
 
   - 참고 사이트 https://stackoverflow.com/questions/50321213/how-to-extend-pageview-to-both-sides-with-builder
+
+
+
+- transform 또는 Positioned 로 자식 위젯을 부모 위젯 영역을 초과하게 위치시키기 : 
+
+  - Stack 위젯의 자식으로 Positioned 위젯을 두고, left, top 같은 속성 값을 음수로 하면 된다.
+
+  - Container 위젯의 프로퍼티인 transform 에 ```Matrix4.translationValues(x, y, z)``` 를 대입할 때, x와 y값을 음수로 하면 된다.
+
+  - 참고자료
+
+    https://stackoverflow.com/questions/48086486/does-flutter-support-negative-margin 
+
+
+
+- ClipRRect 위젯 :
+
+  - child 위젯을 둥근 사각형으로 자르는 위젯 (자식 위젯 영역에 borderRadius를 붙이는 위젯)
+
+    ```dart
+    ClipRRect(
+        borderRadius: BorderRadius.all(Radius.circular(12)),
+        child: Stack(
+            children: [
+                Positioned(
+                    left: -Get.width * 0.016,
+                    top: -Get.width * 0.016,
+                    child: Container(
+                        height: Get.height * 0.08,
+                        width: Get.height * 0.08,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.amber,
+                        ),
+                    ),
+                ),
+        	],
+        ),
+    ),
+    ```
+    
+  - 위같이 해서 아래 사진 모양을 만들 수 있다.
+  
+    ![image](https://user-images.githubusercontent.com/48408417/121637020-bf309e00-cac3-11eb-81d4-5fe91bf8348e.png)
+  
+  - 참고한 자료
+    https://stackoverflow.com/questions/53639222/how-to-have-a-stack-widget-constrain-itself-to-a-positioned-child-in-flutter
 
